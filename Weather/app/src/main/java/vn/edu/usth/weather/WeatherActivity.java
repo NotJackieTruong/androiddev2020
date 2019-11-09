@@ -12,11 +12,33 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("My_Tag", "This is on start");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("My_Tag", "")
+        Log.i("My_Tag", "This is on start");
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("My_Tag", "This is on resume");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("My_Tag", "This is on Pause");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("My_Tag", "This is on Stop");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("My_Tag", "This is on destroy");
+    }
+
 }
