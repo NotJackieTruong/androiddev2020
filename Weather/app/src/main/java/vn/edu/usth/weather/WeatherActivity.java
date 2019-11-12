@@ -11,8 +11,11 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_weather);
         Log.i("My_Tag", "This is on start");
+
+        forecast_fragment forecastFragment = new forecast_fragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.forecastFragment, forecastFragment).commit();
     }
 
     @Override
@@ -40,5 +43,6 @@ public class WeatherActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i("My_Tag", "This is on destroy");
     }
+
 
 }
