@@ -28,6 +28,13 @@ public class WeatherActivity extends AppCompatActivity {
         super.onResume();
         Log.i("My_Tag", "This is on resume");
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("My_Tag", "This is on restart");
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
