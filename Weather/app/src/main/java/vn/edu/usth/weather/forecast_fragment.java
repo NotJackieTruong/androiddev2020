@@ -39,6 +39,7 @@ public class forecast_fragment extends Fragment {
 
         RelativeLayout.LayoutParams text_view_param = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         text_view_param.addRule(RelativeLayout.CENTER_IN_PARENT);
+        text_view_param.setMargins(0, 15, 0, 15);
         RelativeLayout.LayoutParams image_view_param = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         View view = inflater.inflate(R.layout.forecast_fragment, container, false);
