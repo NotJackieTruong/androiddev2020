@@ -6,27 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".forecast_fragment">
 
+
     <LinearLayout
         android:id="@+id/linearlayout1"
-        android:layout_width="240dp"
-        android:layout_height="487dp"
+        android:layout_width="368dp"
+        android:layout_height="584dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thursday"
-            />
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="94dp"
-            android:layout_height="107dp"
-            android:src="@drawable/weather_icon_png_4" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
