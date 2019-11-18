@@ -8,15 +8,16 @@
 
 
     <LinearLayout
-        android:id="@+id/linearlayout1"
-        android:layout_width="368dp"
-        android:layout_height="584dp"
+        android:id="@+id/vertical_layout"
+        android:layout_width="265dp"
+        android:layout_height="530dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
