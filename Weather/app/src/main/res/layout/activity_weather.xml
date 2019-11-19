@@ -8,6 +8,7 @@
     tools:context=".WeatherActivity">
 
     <LinearLayout
+        android:id="@+id/weatherForecastLinearLayout"
         android:layout_width="301dp"
         android:layout_height="450dp"
         android:orientation="vertical"
@@ -16,17 +17,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <fragment
-            android:id="@+id/weatherFragment"
-            android:name="vn.edu.usth.weather.WeatherFragment"
-            android:layout_width="match_parent"
-            android:layout_height="117dp" />
 
-        <fragment
-            android:id="@+id/fragment2"
-            android:name="vn.edu.usth.weather.forecast_fragment"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/weatherForecastViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
