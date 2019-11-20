@@ -6,15 +6,13 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".WeatherAndForecastFragment">
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="6"
-    android:id="@+id/weatherFragment" />
+    <FrameLayout
+        android:id="@+id/weatherFragment"
+        android:layout_width="match_parent"
+        android:layout_height="146dp" />
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="4"
-    android:id="@+id/forecastFragment" />
+    <FrameLayout
+        android:id="@+id/forecastFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

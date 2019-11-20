@@ -18,13 +18,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/textTopRight"
         android:layout_alignParentRight="true" />
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         android:id="@+id/imageCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:paddingBottom="20px"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:paddingBottom="20px" />
 
 </RelativeLayout>
