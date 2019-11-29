@@ -1,7 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">USTH_Weather</string>
-    <!--    <string name="textview">TextView</string>-->
-    <string name="textView">Thursday</string>
-    <string name="imageView1">weather_Icon</string>
-    <string name="textview">TextView</string>
+    <!--    days of the week-->
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+    <!--    Weather forecaste-->
+    <string name="sunny">Sunny</string>
+    <string name="windy">Windy</string>
+    <string name="cloudy_rain">Cloudy rain</string>
+
 </resources>

@@ -39,33 +39,33 @@ public class forecast_fragment extends Fragment {
             weather_forecast = horizontal_row.findViewById(R.id.weather_forcast);
             
             if(i==1){
-                dayText.setText("Monday");
+                dayText.setText(R.string.monday);
                 icon.setImageResource(R.drawable.weather_icon_sunny);
-                weather_forecast.setText("Sunny");
+                weather_forecast.setText(R.string.sunny);
             } else if(i==2){
-                dayText.setText("Tuesday");
+                dayText.setText(R.string.tuesday);
                 icon.setImageResource(R.drawable.weather_icon_windy_day);
-                weather_forecast.setText("Windy");
+                weather_forecast.setText(R.string.windy);
             } else if(i==3){
-                dayText.setText("Wednesday");
+                dayText.setText(R.string.wednesday);
                 icon.setImageResource(R.drawable.weather_icon_cloudy_rainy_day);
-                weather_forecast.setText("Cloudy Rainy");
+                weather_forecast.setText(R.string.cloudy_rain);
             } else if(i==4){
-                dayText.setText("Thursday");
+                dayText.setText(R.string.thursday);
                 icon.setImageResource(R.drawable.weather_icon_windy_day);
-                weather_forecast.setText("Windy");
+                weather_forecast.setText(R.string.sunny);
             } else if(i==5){
-                dayText.setText("Friday");
+                dayText.setText(R.string.friday);
                 icon.setImageResource(R.drawable.weather_icon_sunny);
-                weather_forecast.setText("Sunny");
+                weather_forecast.setText(R.string.windy);
             } else if(i==6){
-                dayText.setText("Saturday");
+                dayText.setText(R.string.saturday);
                 icon.setImageResource(R.drawable.weather_icon_windy_day);
-                weather_forecast.setText("Windy");
+                weather_forecast.setText(R.string.sunny);
             } else if(i==7){
-                dayText.setText("Sunday");
+                dayText.setText(R.string.sunday);
                 icon.setImageResource(R.drawable.weather_icon_cloudy_rainy_day);
-                weather_forecast.setText("Cloudy Rainy");
+                weather_forecast.setText(R.string.cloudy_rain);
             }
 
             vertical_layout.addView(horizontal_row);

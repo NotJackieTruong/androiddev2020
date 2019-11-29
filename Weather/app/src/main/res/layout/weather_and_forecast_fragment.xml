@@ -9,7 +9,7 @@ tools:context=".WeatherAndForecastFragment">
     <FrameLayout
         android:id="@+id/weatherFragment"
         android:layout_width="match_parent"
-        android:layout_height="146dp" />
+        android:layout_height="170dp" />
 
     <FrameLayout
         android:id="@+id/forecastFragment"

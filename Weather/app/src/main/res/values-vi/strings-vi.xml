@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">USTH_Weather</string>
+    <!--    <string name="textview">TextView</string>-->
+    <string name="monday">Thứ hai</string>
+    <string name="tuesday">Thứ ba</string>
+    <string name="wednesday">Thứ tư</string>
+    <string name="thursday">Thứ năm</string>
+    <string name="friday">Thứ sáu</string>
+    <string name="saturday">Thứ bảy</string>
+    <string name="sunday">Chủ nhật</string>
+
+    <!--    Weather forecaste-->
+    <string name="sunny">Có Nắng</string>
+    <string name="windy">Có gió</string>
+    <string name="cloudy_rain">Có mây và mưa</string>
+
+</resources>
+
