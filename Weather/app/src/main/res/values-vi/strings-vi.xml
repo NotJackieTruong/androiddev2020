@@ -15,6 +15,6 @@
     <string name="sunny">Có Nắng</string>
     <string name="windy">Có gió</string>
     <string name="cloudy_rain">Có mây và mưa</string>
-
+    <string name="search_button">Nut</string>
 </resources>
 

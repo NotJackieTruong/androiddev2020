@@ -15,4 +15,6 @@
     <string name="windy">Windy</string>
     <string name="cloudy_rain">Cloudy rain</string>
 
+    <string name="search_button">Button</string>
+
 </resources>
