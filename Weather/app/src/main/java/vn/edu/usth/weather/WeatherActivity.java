@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +31,13 @@ public class WeatherActivity extends AppCompatActivity {
     private Adapter adapter;
     private TabLayout tabLayout;
     String filePath = Environment.getExternalStorageDirectory()+"D:\\NCT/NuthinButAGThang-DrDre_38gtx.mp3";
-
+    final Handler handler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String content = msg.getData().getString("server_response");
+            Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +53,8 @@ public class WeatherActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+
+
 
 
 //        forecast_fragment forecastFragment = new forecast_fragment();
@@ -63,7 +74,26 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
        switch (item.getItemId()){
            case R.id.refresh:
-               Toast.makeText(getApplicationContext(), "Refresh", Toast.LENGTH_SHORT).show();
+               //create new thread
+               Thread thread = new Thread(new Runnable() {
+                   @Override
+                   public void run() {
+                       try{
+                           Thread.sleep(5000);
+                       }
+                       catch (InterruptedException e){
+                           e.printStackTrace();
+                       }
+                       //assume we got our data from server
+                       Bundle bundle = new Bundle();
+                       bundle.putString("server_response", "some sample json here");
+                       //notify main thread
+                       Message message = new Message();
+                       message.setData(bundle);
+                       handler.sendMessage(message);
+                   }
+               });
+               thread.start();
                break;
            case R.id.overflow_button:
                View overflowMenuView = findViewById(R.id.overflow_button);
