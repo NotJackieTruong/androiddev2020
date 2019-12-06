@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,12 +21,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class WeatherActivity extends AppCompatActivity {
@@ -33,6 +39,7 @@ public class WeatherActivity extends AppCompatActivity {
     private Adapter adapter;
     private TabLayout tabLayout;
     String filePath = Environment.getExternalStorageDirectory()+"D:\\NCT/NuthinButAGThang-DrDre_38gtx.mp3";
+
     final Handler handler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -40,6 +47,10 @@ public class WeatherActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
         }
     };
+
+//    public WeatherActivity() throws MalformedURLException {
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +68,53 @@ public class WeatherActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                URL url = null;
+                try{
+                    url = new URL(strings[0]);
+
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setDoInput(true);
+
+                    connection.connect();
+
+                    //Receive response
+                    int response = connection.getResponseCode();
+                    Log.i("USTHWeather", "The response is: " + response);
+                    InputStream inputStream = connection.getInputStream();
+                    //Process image response
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    return bitmap;
+                } catch(MalformedURLException e){
+                    e.printStackTrace();
+                } catch (Exception e){
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+                ImageView logo = (ImageView)findViewById(R.id.logo);
+                logo.setImageBitmap(bitmap);
+
+            }
+        };
+        task.execute("https://usth.edu.vn/uploads/logo.png");
 
 
 //        forecast_fragment forecastFragment = new forecast_fragment();
