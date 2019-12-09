@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +26,10 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.FileInputStream;
@@ -53,13 +58,13 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         Log.i("My_Tag", "This is on start");
         viewPager = findViewById(R.id.weatherForecastViewPager);
         adapter = new Adapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+        final RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         MediaPlayer mediaPlayer = MediaPlayer.create(WeatherActivity.this, R.raw.musicbackground);
         mediaPlayer.start();
@@ -67,55 +72,67 @@ public class WeatherActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-
-        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+        //labwork 16
+        Response.Listener<Bitmap> listener= new Response.Listener<Bitmap>() {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected Bitmap doInBackground(String... strings) {
-                URL url = null;
-                try{
-                    url = new URL(strings[0]);
-
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setDoInput(true);
-
-                    connection.connect();
-
-                    //Receive response
-                    int response = connection.getResponseCode();
-                    Log.i("USTHWeather", "The response is: " + response);
-                    InputStream inputStream = connection.getInputStream();
-                    //Process image response
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    return bitmap;
-                } catch(MalformedURLException e){
-                    e.printStackTrace();
-                } catch (Exception e){
-
-                }
-                return null;
-            }
-
-            @Override
-            protected void onProgressUpdate(Integer... values) {
-                super.onProgressUpdate(values);
-            }
-
-            @Override
-            protected void onPostExecute(Bitmap bitmap) {
-                super.onPostExecute(bitmap);
-                ImageView logo = (ImageView)findViewById(R.id.logo);
-                logo.setImageBitmap(bitmap);
-
+            public void onResponse(Bitmap response) {
+                ImageView imageView = (ImageView)findViewById(R.id.logo);
+                imageView.setImageBitmap(response);
             }
         };
-        task.execute("https://usth.edu.vn/uploads/logo.png");
+        ImageRequest imageRequest = new ImageRequest("https://usth.edu.vn/uploads/logo.png",listener, 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.ARGB_8888, null );
+        queue.add(imageRequest);
 
+
+        //labwork 15
+//        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+//            @Override
+//            protected void onPreExecute() {
+//                super.onPreExecute();
+//            }
+//
+//            @Override
+//            protected Bitmap doInBackground(String... strings) {
+//                URL url = null;
+//                try{
+//                    url = new URL(strings[0]);
+//
+//                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                    connection.setRequestMethod("GET");
+//                    connection.setDoInput(true);
+//
+//                    connection.connect();
+//
+//                    //Receive response
+//                    int response = connection.getResponseCode();
+//                    Log.i("USTHWeather", "The response is: " + response);
+//                    InputStream inputStream = connection.getInputStream();
+//                    //Process image response
+//                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//                    return bitmap;
+//                } catch(MalformedURLException e){
+//                    e.printStackTrace();
+//                } catch (Exception e){
+//
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onProgressUpdate(Integer... values) {
+//                super.onProgressUpdate(values);
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Bitmap bitmap) {
+//                super.onPostExecute(bitmap);
+//                ImageView logo = (ImageView)findViewById(R.id.logo);
+//                logo.setImageBitmap(bitmap);
+//
+//            }
+//        };
+//        task.execute("https://usth.edu.vn/uploads/logo.png");
+//
 
 //        forecast_fragment forecastFragment = new forecast_fragment();
 //        getSupportFragmentManager().beginTransaction().add(R.id.fragment2, forecastFragment).commit();
